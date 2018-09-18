@@ -3,6 +3,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Stack;
 
 public class Main {
@@ -10,13 +11,14 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("Starting...");
 
-        int param = 12;
+        int param = 0;
 
         for (String arg : args) {
             param = Integer.parseInt(arg);
         }
 
-        ArrayList<Long> list = readFile(chooseFile(param));
+//        ArrayList<Long> list = readFile(chooseFile(param));
+        ArrayList<Long> list = new ArrayList<>(Arrays.asList(2L,8L,5L,3L,9L,1L));
 
         heapSort(list);
     }
@@ -116,8 +118,8 @@ public class Main {
     }
 
     static void maxHeapify(ArrayList<Long> list, int index){
-        int left = 2*index;
-        int right = 2*index + 1;
+        int left = 2*index + 1;
+        int right = 2*index + 2;
 
         int max = index;
 
