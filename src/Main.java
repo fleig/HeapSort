@@ -17,8 +17,8 @@ public class Main {
             param = Integer.parseInt(arg);
         }
 
-//        ArrayList<Long> list = readFile(chooseFile(param));
-        ArrayList<Long> list = new ArrayList<>(Arrays.asList(2L,8L,5L,3L,9L,1L));
+        ArrayList<Long> list = readFile(chooseFile(param));
+//        ArrayList<Long> list = new ArrayList<>(Arrays.asList(2L,8L,5L,3L,9L,1L));
 
         heapSort(list);
     }
