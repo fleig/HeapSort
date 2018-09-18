@@ -10,13 +10,13 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("Starting...");
 
-        int param = 0;
+        int param = 12;
 
         for (String arg : args) {
             param = Integer.parseInt(arg);
         }
 
-        ArrayList<Integer> list = readFile(chooseFile(param));
+        ArrayList<Long> list = readFile(chooseFile(param));
 
         heapSort(list);
     }
@@ -45,8 +45,8 @@ public class Main {
         return filePath + "/testes/" + name;
     }
 
-    static ArrayList<Integer> readFile(String str){
-        ArrayList<Integer> list = new ArrayList<>();
+    static ArrayList<Long> readFile(String str){
+        ArrayList<Long> list = new ArrayList<>();
 
         BufferedReader br = null;
         FileReader fr = null;
@@ -58,7 +58,7 @@ public class Main {
             String line;
 
             while ((line = br.readLine()) != null) {
-                list.add(Integer.valueOf(line));
+                list.add(Long.valueOf(line));
             }
 
         } catch (IOException e) {
@@ -77,8 +77,8 @@ public class Main {
         return list;
     }
 
-    static void heapSort(ArrayList<Integer> list){
-        Stack<Integer> pilha = new Stack<>();
+    static void heapSort(ArrayList<Long> list){
+        Stack<Long> pilha = new Stack<>();
 
         buildMaxHeap(list);
 
@@ -86,7 +86,7 @@ public class Main {
 
         for(int i = size; i>=0; i--){
             //swap
-            int aux = list.get(0);
+            long aux = list.get(0);
             list.set(0, list.get(i));
             list.set(i, aux);
 
@@ -99,7 +99,7 @@ public class Main {
         print(pilha);
     }
 
-    static void print(Stack<Integer> pilha){
+    static void print(Stack<Long> pilha){
         System.out.print("Sort: ");
         while(pilha.size() > 0) {
             System.out.print(pilha.pop() + " ");
@@ -107,7 +107,7 @@ public class Main {
         System.out.println();
     }
 
-    static void buildMaxHeap(ArrayList<Integer> list){
+    static void buildMaxHeap(ArrayList<Long> list){
         int size = list.size() - 1;
 
         for(int i = size/2; i >= 0; i--){
@@ -115,7 +115,7 @@ public class Main {
         }
     }
 
-    static void maxHeapify(ArrayList<Integer> list, int index){
+    static void maxHeapify(ArrayList<Long> list, int index){
         int left = 2*index;
         int right = 2*index + 1;
 
@@ -133,7 +133,7 @@ public class Main {
         if (max != index)
         {
             //troca raiz com max
-            int aux = list.get(index);
+            long aux = list.get(index);
             list.set(index, list.get(max));
             list.set(max, aux);
 
